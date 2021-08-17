@@ -1,0 +1,23 @@
+{
+	"name": "lvd-fluentui-component-scaffolding",
+	"version": "0.0.1",
+	"description": "",
+	"author": "Alexandru Boia <alexandru.boia@gmail.com>",
+	"license": "BSD-3-Clause",
+	"main": "./index.js",
+	"bin": {
+		"create-fluentui-component": "./index.js"
+	},
+	"engines": {
+		"node": ">=10.13.0"
+	},
+	"files": [
+		"src",
+		"template",
+		"template/**",
+		"index.js"
+	],
+	"dependencies": {
+		"lodash": "^4.17.21"
+	}
+}
