@@ -76,14 +76,14 @@ The following javascript files are generated for the library-related component:
 
 | File | Description |
 | --- | --- |
-| `src/components/${LibraryName}.jsx` | The main component file, that contains an empty component class definition. The `${LbraryName}` placeholder is replaced with the value collected (or derived) from user input. |
+| `src/components/${LibraryName}.jsx` | [The main component file](https://github.com/alexboia/LVD-FluentUi-Component-Scaffolding/blob/main/template/src/components/%24%7BLibraryName%7D.jsx), that contains an empty component class definition. The `${LbraryName}` placeholder is replaced with the value collected (or derived) from user input. |
 | `src/components/Index.js` | The root export file that will be used as an entry point when building the library itself. |
 
 The following javascript files are generated for the demo application-related components:
 
 | File | Description |
 | --- | --- |
-| `src/App.jsx` | The actual demo application main component |
+| `src/App.jsx` | The actual demo [application main component](https://github.com/alexboia/LVD-FluentUi-Component-Scaffolding/blob/main/template/src/App.jsx) |
 | `src/Root.jsx` | Sets up the root component structure, including the stuff required for FluentUI apps |
 | `src/Index.jsx` | Sets up the who react application lifecycle |
 
