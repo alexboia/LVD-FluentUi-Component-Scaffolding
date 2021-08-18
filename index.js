@@ -15,7 +15,7 @@ function run() {
 		const componentTemplate = new ComponentTemplate(templateSourceDir, 
 			logger);
 
-		const packageDestinationRootDir = '.';
+		const packageDestinationRootDir = './';
 		const componentPackage = new ComponentPackage(packageDestinationRootDir, 
 			componentTemplate.read(), 
 			logger);
