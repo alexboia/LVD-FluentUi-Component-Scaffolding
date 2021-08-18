@@ -22,3 +22,5 @@ It also runs `npm install` after the package structure has been created.
 ## Stylesheet files
 
 ## Demo application
+
+## Credits
