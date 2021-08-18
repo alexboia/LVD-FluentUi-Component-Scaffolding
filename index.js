@@ -5,8 +5,12 @@ const ComponentPackage = require('./lib/package.js');
 
 function run() {
 	try {
-		const componentTemplate = new ComponentTemplate(__dirname);
-		const componentPackage = new ComponentPackage('.', componentTemplate.read());
+		const templateSourceDir = __dirname;
+		const componentTemplate = new ComponentTemplate(templateSourceDir);
+
+		const packageDestinationRootDir = '.';
+		const componentPackage = new ComponentPackage(packageDestinationRootDir, componentTemplate.read());
+
 		componentPackage.create();
 	} catch (e) {
 		console.error('An error occurred while creating the package.');
