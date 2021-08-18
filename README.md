@@ -71,8 +71,42 @@ The following support files are generated (configuration files, build scripts, l
 
 ### Component files
 
+The following javascript files are generated for the library-related component:
+
+| File | Description |
+| --- | --- |
+| `src/components/${LibraryName}.jsx` | The main component file, that contains an empty component class definition. The `${LbraryName}` placeholder is replaced with the value collected (or derived) from user input. |
+| `src/components/Index.js` | The root export file that will be used as an entry point when building the library itself. |
+
+The following javascript files are generated for the demo application-related components:
+
+| File | Description |
+| --- | --- |
+| `src/App.jsx` | The actual demo application main component |
+| `src/Root.jsx` | Sets up the root component structure, including the stuff required for FluentUI apps |
+| `src/Index.jsx` | Sets up the who react application lifecycle |
+
 ### Stylesheet files
 
+The following stylesheet files are generated for the library-related component:
+
+| File | Description |
+| --- | --- |
+| `src/css/components/${LibraryNameDashed}.css` | The main component stylesheet file. The `${LibraryNameDashed}.css` placeholder is replaced with the value collected (or derived) from user input. |
+| `src/css/components/index.css` | The root file that will be used as a stylesheet entry point when building the library itself. |
+
+The following stylesheet files are generated for the demo application:
+
+| File | Description |
+| --- | --- |
+| `src/css/style.css` | The maine demo app stylesheet file. Contains [some standard includes, as well as basic rules](https://github.com/alexboia/LVD-FluentUi-Component-Scaffolding/blob/main/template/src/css/style.css). |
+
 ### Demo application
+
+The following files are generated in order to run the built demo application:
+
+| File | Description |
+| --- | --- |
+| `demo/index.html` | The html entry point for the demo application. Either run it directly or deploy it somewhere. |
 
 ## Credits
