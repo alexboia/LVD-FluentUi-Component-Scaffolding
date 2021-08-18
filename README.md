@@ -23,9 +23,7 @@ Navigate to the root directory where your component will be created and run:
 
 You will then be prompted for additional information, which is further detailed below.
 
-## Output structure
-
-### Required user input
+## Required user input
 
 The following parameters are collected from user input:
 
@@ -36,6 +34,8 @@ The following parameters are collected from user input:
 | `Package author` | The author of the package  | N | - |
 | `Libary name` | The name of the root component; also the name used for the library configuratin in the webpack config file. | N | The part of the package name followning the last dash. |
 | `Library name, dashed form` | The name of the root component in dashed form. | N | Derived from the library name. |
+
+## Output structure
 
 ### The directory structure
 
