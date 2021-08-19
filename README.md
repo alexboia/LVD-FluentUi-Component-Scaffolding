@@ -40,10 +40,10 @@ The following parameters are collected from user input:
 
 | Parameter | Description | Mandatory | Default |
 | --- | --- | --- | --- |
-| `Package name` | The name of the package. The name used in `package.json` is obtained from this value, converted to lower case  | `Y` | - |
+| `Package name` | The name of the package. The name used in `package.json` is obtained from this value, converted to lower case  | `Y` | If `--create-root` is not specified, then the default package name is the name of the current directory, if considered valid. |
 | `Package description` | The description of the package  | `N` | - |
 | `Package author` | The author of the package  | `N` | - |
-| `Libary name` | The name of the root component; also the name used for the library configuratin in the webpack config file. | `N` | The part of the package name followning the last dash. |
+| `Libary name` | The name of the root component; also the name used for the library configuratin in the webpack config file. | `N` | The part of the package name following the last dash. |
 | `Library name, dashed form` | The name of the root component in dashed form. | `N` | Derived from the library name. |
 
 ## Output structure
