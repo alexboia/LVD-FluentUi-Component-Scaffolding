@@ -66,6 +66,8 @@ module.exports = {
 	},
 
 	plugins: [
+		//courtesy of https://stackoverflow.com/questions/65018431/webpack-5-uncaught-referenceerror-process-is-not-defined
+		//also see https://webpack.js.org/plugins/define-plugin/
 		new webpack.ProvidePlugin({
 			process: 'process/browser',
 	 	}),
