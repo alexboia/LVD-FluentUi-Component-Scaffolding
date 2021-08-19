@@ -1,5 +1,7 @@
 # FluentUI Component Scaffolding
 
+[![NPM](https://nodei.co/npm/lvd-fluentui-component-scaffolding.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/lvd-fluentui-component-scaffolding/)
+
 This is a nodejs application to generate the basic structure of a React component built using the [FluentUI](https://github.com/microsoft/fluentui) library, including the scripts and configuration requried for publishing it to the `npm` package repository.
 This tool uses a built-in template directory, collects some additional data, such as package name, library name, package author and creates:
 
