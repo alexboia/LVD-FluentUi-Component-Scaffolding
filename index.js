@@ -10,7 +10,12 @@ function run() {
 	const args = _getArgs();
 	const logger = _createLogger(args.logDirectory);
 	try {
-		_buildPackage(logger);
+		const options = {
+			logDirectory: args.logDirectory,
+			createRoot: args.createRoot
+		};
+
+		_buildPackage(logger, options);
 	} catch (e) {
 		logger.reportProgressError('The package could not be created.', e);
 	}
@@ -21,8 +26,14 @@ function _getArgs() {
 		.option('log-directory', {
 			alias: 'ld',
 			type: 'string',
-			description: 'Log directory name. Defaults to _logs',
+			description: 'Specify log directory name. Defaults to _logs',
 			default: '_logs'
+		})
+		.option('create-root', {
+			alias: 'cr',
+			type: 'boolean',
+			description: 'Create root component directory, use the current one instead. Defaults to false, that is use current working directory.',
+			default: false
 		})
 		.help()
 		.argv;
@@ -33,8 +44,8 @@ function _createLogger(logDirectory) {
 	return new ComponentLogger(logDirectory, serviceName);
 }
 
-function _buildPackage(logger) {
-	const componentPackageBuilder = _createPackageBuilder(logger);
+function _buildPackage(logger, options) {
+	const componentPackageBuilder = _createPackageBuilder(logger, options);
 	logger.reportNormalProgressStep('Begin package creation...');
 
 	componentPackageBuilder.create((success) => {
@@ -46,12 +57,13 @@ function _buildPackage(logger) {
 	});
 }
 
-function _createPackageBuilder(logger) {
+function _createPackageBuilder(logger, options) {
 	const templateSourceDir = __dirname;
 	const packageDestinationRootDir = './';
 
 	return new ComponentPackageBuilder(templateSourceDir,
 		packageDestinationRootDir, 
+		options,
 		logger);
 }
 

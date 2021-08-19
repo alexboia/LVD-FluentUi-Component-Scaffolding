@@ -25,6 +25,15 @@ Navigate to the root directory where your component will be created and run:
 
 You will then be prompted for additional information, which is further detailed below.
 
+### Command line arguments
+
+| Argument | Type | Description |
+| --- | --- | --- |
+| `--version` | `boolean` | Show version number |
+| `--log-directory`, `-ld` | `string` | Specify log directory name. Defaults to `_logs` |
+| `--create-root`, `-cr` | `boolean` | Create root component directory, use the current one instead. Defaults to `false`, that is use current working directory as root. |
+| `--help` | `boolean` | Show help |
+
 ## Required user input
 
 The following parameters are collected from user input:
@@ -125,6 +134,7 @@ The following placeholders are supported for usage both in file names, as well a
 | `${PackageDescription}` | `Package description` |
 | `${PackageAuthor}` | `Package author` |
 | `${CurrentYear}` | `new Date().getFullYear()` |
+| `${LogDirectoryName}` | Log directory name as provided via command line arguments. Defaults to `_logs` |
 
 ## Notes
 
