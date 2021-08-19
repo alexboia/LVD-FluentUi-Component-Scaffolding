@@ -8,6 +8,21 @@
 	"bin": {
 		"create-fluentui-component": "./index.js"
 	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/alexboia/LVD-FluentUi-Component-Scaffolding.git"
+	},
+	"bugs": {
+		"url": "https://github.com/alexboia/LVD-FluentUi-Component-Scaffolding/issues"
+	},
+	"keywords": [
+		"react",
+		"reactjs",
+		"react-components",
+		"ui-components",
+		"fluentui",
+		"scaffolding"
+	],
 	"engines": {
 		"node": ">=10.13.0"
 	},
