@@ -1,19 +1,34 @@
+#!/usr/bin/env node
 "use strict";
+
+const yargs = require('yargs');
 
 const ComponentLogger = require('./lib/logger.js');
 const ComponentPackageBuilder = require('./lib/package-builder.js');
 
 function run() {
-	const logger = _createLogger();
+	const args = _getArgs();
+	const logger = _createLogger(args.logDirectory);
 	try {
 		_buildPackage(logger);
 	} catch (e) {
-		logger.reportProgressError('An error occured while creating the package', e);
+		logger.reportProgressError('The package could not be created.', e);
 	}
 }
 
-function _createLogger() {
-	const logDirectory = './_logs';
+function _getArgs() {
+	return yargs
+		.option('log-directory', {
+			alias: 'ld',
+			type: 'string',
+			description: 'Log directory name. Defaults to _logs',
+			default: '_logs'
+		})
+		.help()
+		.argv;
+}
+
+function _createLogger(logDirectory) {
 	const serviceName = 'create-fluentui-component';
 	return new ComponentLogger(logDirectory, serviceName);
 }

@@ -12,13 +12,14 @@
 		"node": ">=10.13.0"
 	},
 	"files": [
-		"src",
+		"lib",
 		"template",
 		"template/**",
 		"index.js"
 	],
 	"dependencies": {
 		"lodash": "^4.17.21",
-		"winston": "^3.3.3"
+		"winston": "^3.3.3",
+		"yargs": "^17.1.1"
 	}
 }

@@ -124,4 +124,14 @@ The following placeholders are supported for usage both in file names, as well a
 | `${PackageAuthor}` | `Package author` |
 | `${CurrentYear}` | `new Date().getFullYear()` |
 
-## Credits
+## Notes
+
+1. To avoid having `npm pack` strip the empty directories, a `.dummy` file is included in each template directory. This does not find its way in the final component package directory.
+2. To avoid having `npm pack` rename the `.gitignore` file in the template directory to `.npmignore`, the file is included using the `.ignore` name and renamed when when creating the final component package directory.
+
+## Donate
+
+I put some of my free time into developing and maintaining this plugin.
+If helped you in your projects and you are happy with it, you can...
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Q5Q01KGLM)
