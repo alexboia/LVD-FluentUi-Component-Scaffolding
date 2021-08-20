@@ -17,7 +17,8 @@ function run() {
 			gitCheckout: args.gitCheckout,
 			gitCommit: args.gitCommit,
 			gitPush: args.gitPush,
-			skipInstallingDependencies: args.skipDeps
+			skipInstallingDependencies: args.skipDeps,
+			shouldReadPackageModelFromManifest: args.fromManifest
 		};
 
 		_buildPackage(logger, options);
@@ -68,6 +69,12 @@ function _getArgs() {
 			alias: 'sd',
 			type: 'boolean',
 			description: 'Do not run npm install afer the component package has been created.',
+			default: false
+		})
+		.option('from-manifest', {
+			alias: 'fm',
+			type: 'boolean',
+			description: 'Read package information from a manifest file named component-manifest.json in the base destination directory.',
 			default: false
 		})
 		.help()
