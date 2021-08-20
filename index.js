@@ -13,13 +13,15 @@ function run() {
 		const options = {
 			logDirectory: args.logDirectory,
 			shouldCreateRoot: args.createRoot,
-			noVsCode: args.noVsCode,
+			skipCreateVsCodeWorkspaceFile: args.skipVscode,
 			gitCheckout: args.gitCheckout,
 			gitCommit: args.gitCommit,
 			gitPush: args.gitPush,
 			skipInstallingDependencies: args.skipDeps,
 			shouldReadPackageModelFromManifest: args.fromManifest
 		};
+
+		console.table(options);
 
 		_buildPackage(logger, options);
 	} catch (e) {
@@ -41,8 +43,8 @@ function _getArgs() {
 			description: 'Create root component directory. Defaults to false, that is use current working directory.',
 			default: false
 		})
-		.option('no-vs-code', {
-			alias: 'nvs',
+		.option('skip-vscode', {
+			alias: 'svs',
 			type: 'boolean',
 			description: 'Do not create the .code-workspace VS Code workspace file, even if it is included in the template.',
 			default: false
