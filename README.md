@@ -30,8 +30,9 @@ You will then be prompted for additional information, which is further detailed 
 | Argument | Type | Description |
 | --- | --- | --- |
 | `--version` | `boolean` | Show version number |
-| `--log-directory`, `-ld` | `string` | Specify log directory name. Defaults to `_logs` |
-| `--create-root`, `-cr` | `boolean` | Create root component directory, use the current one instead. Defaults to `false`, that is use current working directory as root. |
+| `--log-directory`, `--ld` | `string` | Specify log directory name. Defaults to `_logs` |
+| `--create-root`, `--cr` | `boolean` | Create root component directory, use the current one instead. Defaults to `false`, that is use current working directory as root. |
+| `--skip-deps`, `--sd` | `boolean` | Do not run npm install afer the component package has been created. Defaults to `false`. |
 | `--help` | `boolean` | Show help |
 
 ## Required user input

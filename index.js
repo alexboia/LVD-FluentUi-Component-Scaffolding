@@ -3,7 +3,7 @@
 
 const yargs = require('yargs');
 
-const ComponentLogger = require('./lib/logger.js');
+const PackageBuilderLogger = require('./lib/package-builder-logger.js');
 const ComponentPackageBuilder = require('./lib/package-builder.js');
 
 function run() {
@@ -12,7 +12,12 @@ function run() {
 	try {
 		const options = {
 			logDirectory: args.logDirectory,
-			createRoot: args.createRoot
+			shouldCreateRoot: args.createRoot,
+			noVsCode: args.noVsCode,
+			gitCheckout: args.gitCheckout,
+			gitCommit: args.gitCommit,
+			gitPush: args.gitPush,
+			skipInstallingDependencies: args.skipDeps
 		};
 
 		_buildPackage(logger, options);
@@ -35,13 +40,43 @@ function _getArgs() {
 			description: 'Create root component directory, use the current one instead. Defaults to false, that is use current working directory.',
 			default: false
 		})
+		.option('no-vs-code', {
+			alias: 'nvs',
+			type: 'boolean',
+			description: 'Do not create the .code-workspace VS Code workspace file, even if it is included in the template.',
+			default: false
+		})
+		.option('git-checkout', {
+			alias: 'gco',
+			type: 'string',
+			description: 'Checkout the specified directory before creating the component package. Will fail if a .git folder is found and the repository is different than the given one.',
+			default: null
+		})
+		.option('git-commit', {
+			alias: 'gcm',
+			type: 'boolean',
+			description: 'Perform a git commit after creating the component package. You will be prompted for an optional commit message.',
+			default: true
+		})
+		.option('git-push', {
+			alias: 'gcp',
+			type: 'boolean',
+			description: 'Perform a git commit and push after creating the component package. If this flag is specified, the git-committ flag is not required.',
+			default: true
+		})
+		.option('skip-deps', {
+			alias: 'sd',
+			type: 'boolean',
+			description: 'Do not run npm install afer the component package has been created.',
+			default: false
+		})
 		.help()
 		.argv;
 }
 
 function _createLogger(logDirectory) {
 	const serviceName = 'create-fluentui-component';
-	return new ComponentLogger(logDirectory, serviceName);
+	return new PackageBuilderLogger(logDirectory, serviceName);
 }
 
 function _buildPackage(logger, options) {
