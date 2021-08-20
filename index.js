@@ -38,7 +38,7 @@ function _getArgs() {
 		.option('create-root', {
 			alias: 'cr',
 			type: 'boolean',
-			description: 'Create root component directory, use the current one instead. Defaults to false, that is use current working directory.',
+			description: 'Create root component directory. Defaults to false, that is use current working directory.',
 			default: false
 		})
 		.option('no-vs-code', {
