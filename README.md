@@ -82,6 +82,7 @@ The following support files are generated (configuration files, build scripts, l
 | `build-all.ps1` | PowerShell script for building the demo app and the library itself in one sitting |
 | `build-app.ps1` | PowerShell script for building the demo app |
 | `build-dist.ps1` | PowerShell script for building the library itself |
+| `${PackageName}.code-workspace` | VS Code workspace file. The `${PackageName}` placeholder is replaced with the value collected (or derived) from user input. |
 
 ### Component files
 
