@@ -35,6 +35,7 @@
 	"dependencies": {
 		"console-table-printer": "^2.10.0",
 		"lodash": "^4.17.21",
+		"simple-git": "^2.44.0",
 		"winston": "^3.3.3",
 		"yargs": "^17.1.1"
 	}

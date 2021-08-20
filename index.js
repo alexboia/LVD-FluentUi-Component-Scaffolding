@@ -8,21 +8,10 @@ const ComponentPackageBuilder = require('./lib/package-builder.js');
 
 function run() {
 	const args = _getArgs();
-	const logger = _createLogger(args.logDirectory);
+	const options = _getOptions(args);
+	const logger = _createLogger(options.logDirectory);
+
 	try {
-		const options = {
-			logDirectory: args.logDirectory,
-			shouldCreateRoot: args.createRoot,
-			skipCreateVsCodeWorkspaceFile: args.skipVscode,
-			gitCheckout: args.gitCheckout,
-			gitCommit: args.gitCommit,
-			gitPush: args.gitPush,
-			skipInstallingDependencies: args.skipDeps,
-			shouldReadPackageModelFromManifest: args.fromManifest
-		};
-
-		console.table(options);
-
 		_buildPackage(logger, options);
 	} catch (e) {
 		logger.reportProgressError('The package could not be created.', e);
@@ -34,8 +23,8 @@ function _getArgs() {
 		.option('log-directory', {
 			alias: 'ld',
 			type: 'string',
-			description: 'Specify log directory name. Defaults to _logs',
-			default: '_logs'
+			description: 'Specify log directory name. Defaults to ./_logs if --create-root is specified or to ../logs if not',
+			default: null
 		})
 		.option('create-root', {
 			alias: 'cr',
@@ -49,10 +38,10 @@ function _getArgs() {
 			description: 'Do not create the .code-workspace VS Code workspace file, even if it is included in the template.',
 			default: false
 		})
-		.option('git-checkout', {
-			alias: 'gco',
+		.option('git-clone-repo', {
+			alias: 'gcr',
 			type: 'string',
-			description: 'Checkout the specified directory before creating the component package. Will fail if a .git folder is found and the repository is different than the given one.',
+			description: 'Clone the specified directory before creating the component package. Will fail if a .git folder is found and the repository is different than the given one.',
 			default: null
 		})
 		.option('git-commit', {
@@ -81,6 +70,28 @@ function _getArgs() {
 		})
 		.help()
 		.argv;
+}
+
+function _getOptions(args) {
+	let logDirectory = args.logDirectory;
+	if (!logDirectory) {
+		logDirectory = args.createRoot
+			? './_logs'
+			: '../_logs';
+	}
+
+	const options = {
+		logDirectory: logDirectory,
+		shouldCreateRoot: args.createRoot,
+		skipCreateVsCodeWorkspaceFile: args.skipVscode,
+		gitCloneRepo: args.gitCloneRepo,
+		shouldGitCommit: args.gitCommit || args.gitPush,
+		shouldGitPush: args.gitPush,
+		skipInstallingDependencies: args.skipDeps,
+		shouldReadPackageModelFromManifest: args.fromManifest
+	};
+
+	return options;
 }
 
 function _createLogger(logDirectory) {
