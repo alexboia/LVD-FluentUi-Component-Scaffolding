@@ -158,6 +158,13 @@ The following placeholders are supported for usage both in file names, as well a
 | `${CurrentYear}` | `new Date().getFullYear()` |
 | `${LogDirectoryName}` | Log directory name as provided via command line arguments. Defaults to `_logs` |
 
+## Generated log files
+
+The tool generates the following log files:
+
+- `[log-directory]/error.log` - for error events: exceptions, errors coming from the git engine, erros from the `npm install` `stderr` output;
+- `[log-directory]/activity.log` - for every other stuff that's being logged - debug messages, warning messages, info messages and so on.
+
 ## Notes
 
 1. To avoid having `npm pack` strip the empty directories, a `.dummy` file is included in each template directory. This does not find its way in the final component package directory.
