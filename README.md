@@ -25,16 +25,34 @@ Navigate to the root directory where your component will be created and run:
 
 You will then be prompted for additional information, which is further detailed below.
 
+## Demo
+
+Below you can find a screen capture of running this tool with the following arguments:
+
+- `--create-root`
+- `--skip-deps`
+- `--git-clone-repo="[repo-url]"`
+- `--git-push`
+
+![Sample run](lvd-fluentui-scaffolding.gif?raw=true)
+
 ### Command line arguments
 
 | Argument | Type | Description |
 | --- | --- | --- |
 | `--version` | `boolean` | Show version number |
-| `--log-directory`, `--ld` | `string` | Specify log directory name. Defaults to `_logs` |
-| `--skip-vscode`, `--svs` | `boolean` | Do not create the `.code-workspace` VS Code workspace file, even if it is included in the template. Defaults to `false`. |
-| `--create-root`, `--cr` | `boolean` | Create root component directory. Defaults to `false`, that is use current working directory as root. |
-| `--skip-deps`, `--sd` | `boolean` | Do not run npm install afer the component package has been created. Defaults to `false`. |
 | `--from-manifest`, `--fm` | `boolean` | Read package information from a manifest file named component-manifest.json in the base destination directory. Defaults to `false`. |
+| `--create-root`, `--cr` | `boolean` | Create root component directory. Defaults to `false`, that is use current working directory as root. |
+| `--skip-deps`, `--sd` | `boolean` | Do not run `npm install` afer the component package has been created. Defaults to `false`. |
+| `--skip-vscode`, `--svs` | `boolean` | Do not create the `.code-workspace` VS Code workspace file, even if it is included in the template. Defaults to `false`. |
+| `--git-clone-repo`, `--gcr` | `boolean` | Clone the specified directory before creating the component package. Will fail if directory is not empty. Defaults to `null`. |
+| `--git-commit`, `--gcm` | `boolean` | Perform a git commit after creating the component package. You will be prompted for an optional commit message. Defaults to `false`. |
+| `--git-push`, `--gcm` | `boolean` | Perform a git commit and push after creating the component package. If this flag is specified, the `git-commit` flag is not required. Defaults to `false`. |
+| `--git-name`, `--gnm` | `boolean` | Configure git operations to use this author name. Defaults to `null`. |
+| `--git-email`, `--gem` | `boolean` | Configure git operations to use this author email. Defaults to `null`. |
+| `--git-username`, `--gur` | `boolean` | Configure git operations to use this username when logging on. Defaults to `null`. |
+| `--git-token`, `--gtk` | `boolean` | Configure git operations to use this token as password when logging on. Defaults to `null`. |
+| `--log-directory`, `--ld` | `string` | Specify log directory name. Defaults to `_logs` |
 | `--help` | `boolean` | Show help |
 
 ## Required user input

@@ -20,16 +20,22 @@ function run() {
 
 function _getArgs() {
 	return yargs
-		.option('log-directory', {
-			alias: 'ld',
-			type: 'string',
-			description: 'Specify log directory name. Defaults to ./_logs if --create-root is specified or to ../logs if not',
-			default: null
+		.option('from-manifest', {
+			alias: 'fm',
+			type: 'boolean',
+			description: 'Read package information from a manifest file named component-manifest.json in the base destination directory.',
+			default: false
 		})
 		.option('create-root', {
 			alias: 'cr',
 			type: 'boolean',
 			description: 'Create root component directory. Defaults to false, that is use current working directory.',
+			default: false
+		})
+		.option('skip-deps', {
+			alias: 'sd',
+			type: 'boolean',
+			description: 'Do not run npm install afer the component package has been created.',
 			default: false
 		})
 		.option('skip-vscode', {
@@ -41,56 +47,50 @@ function _getArgs() {
 		.option('git-clone-repo', {
 			alias: 'gcr',
 			type: 'string',
-			description: 'Clone the specified directory before creating the component package. Will fail if a .git folder is found and the repository is different than the given one.',
+			description: 'Clone the specified directory before creating the component package. Will fail if directory is not empty.',
 			default: null
 		})
 		.option('git-commit', {
 			alias: 'gcm',
 			type: 'boolean',
 			description: 'Perform a git commit after creating the component package. You will be prompted for an optional commit message.',
-			default: true
+			default: false
 		})
 		.option('git-push', {
 			alias: 'gcp',
 			type: 'boolean',
-			description: 'Perform a git commit and push after creating the component package. If this flag is specified, the git-committ flag is not required.',
-			default: true
+			description: 'Perform a git commit and push after creating the component package. If this flag is specified, the git-commit flag is not required.',
+			default: false
 		})
 		.option('git-name', {
 			alias: 'gnm',
 			type: 'string',
-			description: 'Configure git operations to use this name.',
+			description: 'Configure git operations to use this author name.',
 			default: null
 		})
 		.option('git-email', {
 			alias: 'gem',
 			type: 'string',
-			description: 'Configure git operations to use this email.',
+			description: 'Configure git operations to use this author email.',
 			default: null
 		})
 		.option('git-username', {
 			alias: 'gur',
 			type: 'string',
-			description: 'Configure git operations to use this username.',
+			description: 'Configure git operations to use this username when logging on.',
 			default: null
 		})
 		.option('git-token', {
 			alias: 'gtk',
 			type: 'string',
-			description: 'Configure git operations to use this token.',
+			description: 'Configure git operations to use this token as password when logging on.',
 			default: null
 		})
-		.option('skip-deps', {
-			alias: 'sd',
-			type: 'boolean',
-			description: 'Do not run npm install afer the component package has been created.',
-			default: false
-		})
-		.option('from-manifest', {
-			alias: 'fm',
-			type: 'boolean',
-			description: 'Read package information from a manifest file named component-manifest.json in the base destination directory.',
-			default: false
+		.option('log-directory', {
+			alias: 'ld',
+			type: 'string',
+			description: 'Specify log directory name. Defaults to ./_logs if --create-root is specified or to ../logs if not',
+			default: null
 		})
 		.help()
 		.argv;
