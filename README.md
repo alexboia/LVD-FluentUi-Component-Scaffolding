@@ -34,7 +34,7 @@ Below you can find a screen capture of running this tool with the following argu
 - `--git-clone-repo="[repo-url]"`
 - `--git-push`
 
-![Sample run](lvd-fluentui-scaffolding.gif?raw=true)
+![Sample run](https://raw.githubusercontent.com/alexboia/LVD-FluentUi-Component-Scaffolding/main/lvd-fluentui-scaffolding.gif)
 
 ### Command line arguments
 
