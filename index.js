@@ -56,6 +56,30 @@ function _getArgs() {
 			description: 'Perform a git commit and push after creating the component package. If this flag is specified, the git-committ flag is not required.',
 			default: true
 		})
+		.option('git-name', {
+			alias: 'gnm',
+			type: 'string',
+			description: 'Configure git operations to use this name.',
+			default: null
+		})
+		.option('git-email', {
+			alias: 'gem',
+			type: 'string',
+			description: 'Configure git operations to use this email.',
+			default: null
+		})
+		.option('git-username', {
+			alias: 'gur',
+			type: 'string',
+			description: 'Configure git operations to use this username.',
+			default: null
+		})
+		.option('git-token', {
+			alias: 'gtk',
+			type: 'string',
+			description: 'Configure git operations to use this token.',
+			default: null
+		})
 		.option('skip-deps', {
 			alias: 'sd',
 			type: 'boolean',
@@ -87,6 +111,10 @@ function _getOptions(args) {
 		gitCloneRepo: args.gitCloneRepo,
 		shouldGitCommit: args.gitCommit || args.gitPush,
 		shouldGitPush: args.gitPush,
+		gitEmail: args.gitEmail,
+		gitName: args.gitName,
+		gitUsername: args.gitUsername,
+		gitToken: args.gitToken,
 		skipInstallingDependencies: args.skipDeps,
 		shouldReadPackageModelFromManifest: args.fromManifest
 	};
