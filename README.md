@@ -170,6 +170,29 @@ The tool generates the following log files:
 1. To avoid having `npm pack` strip the empty directories, a `.dummy` file is included in each template directory. This does not find its way in the final component package directory.
 2. To avoid having `npm pack` rename the `.gitignore` file in the template directory to `.npmignore`, the file is included using the `.ignore` name and renamed when when creating the final component package directory.
 
+## Changelog
+
+### Version 0.0.3
+
+- Can now read package information from a manifest file placed in the base target directory (see above). By default it reads from console user input, use `--from-manifest` to switch to package manifest mode;
+- Added option to skip installing dependencies by automatically running `npm install`. By default, dependencies are installed, use `--skip-deps` to skip installation;
+- Added `.code-workspace` template file in the package template and an option to skip creating it, if desired, by specifying the `--skip-vscode` flag;
+- Can now clone a git repository before creating component package, by using `--git-clone-repo=[repo-url]`;
+- Can now commit to the previously cloned git repository after component si created, by using the flag `--git-commit`;
+- Can now push to the previously cloned git repository after component si created, by using the flag `--git-push`;
+- Basic git configuration can be specified by using the flags: `--git-name`, `--git-email`, `--git-username` and `--git-token`;
+- Better error handling;
+- More detailed and better formatted output of executed steps;
+- Major refactoring and some bug fixes.
+
+### Version 0.0.2
+
+- Can now specify whether or not to create a root directory for the package. By default it does not, use `--create-root` flag to create it.
+
+### Version 0.0.1 
+
+- First tracked version
+
 ## Donate
 
 I put some of my free time into developing and maintaining this plugin.
