@@ -4,5 +4,10 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"licenser.license": "Custom",
+		"licenser.author": "Alexandru Boia <alexandru.boia@gmail.com>",
+		"licenser.customHeaderFile": "${workspaceFolder}/LICENSE-HEADER.txt",
+		"licenser.projectName": "LVD-FluentUi-Component-Scaffolding"
+	}
 }
