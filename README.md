@@ -172,6 +172,11 @@ The tool generates the following log files:
 
 ## Changelog
 
+### Version 0.0.4
+
+- Fixed an issue with logging throwing `.trim()` is not a function in certain conditions.
+- Updated package description and home page in `package.json`.
+
 ### Version 0.0.3
 
 - Can now read package information from a manifest file placed in the base target directory (see above). By default it reads from console user input, use `--from-manifest` to switch to package manifest mode;
