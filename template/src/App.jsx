@@ -8,9 +8,11 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<${LibraryName} 
-				
-			/>
+			<div className="${LibraryNameDashed}-demo-container">
+				<${LibraryName} 
+					
+				/>
+			</div>
 		);
 	}
 }
