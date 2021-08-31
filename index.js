@@ -2,14 +2,25 @@
 "use strict";
 
 const yargs = require('yargs');
+const os = require('os');
+const path = require('path');
+const utils = require('./lib/utils.js');
 
 const PackageBuilderLogger = require('./lib/package-builder-logger.js');
 const ComponentPackageBuilder = require('./lib/package-builder.js');
 
+const LoggingServiceName = 'create-fluentui-component';
+const DefaultPackageBuilderLogsDirName = 'package_builder_logs';
+const DefaultWorkspaceDirName = 'workspace';
+
+const SharedStorageDirName = 'lvd-fluentui-component-scaffolding';
+const DefaultPackageDestinationBaseDirPath = './';
+
 function run() {
 	const args = _getArgs();
 	const options = _getOptions(args);
-	const logger = _createLogger(options.logDirectory);
+	const preliminaryDirs = _initializePreliminaryDirectoryStructure(options);
+	const logger = _createLogger(preliminaryDirs.logDirPath);
 
 	try {
 		_buildPackage(logger, options);
@@ -89,23 +100,30 @@ function _getArgs() {
 		.option('log-directory', {
 			alias: 'ld',
 			type: 'string',
-			description: 'Specify log directory name. Defaults to ./_logs if --create-root is specified or to ../logs if not',
-			default: null
+			description: `Specify log directory name. Defaults to ${DefaultPackageBuilderLogsDirName}`,
+			default: DefaultPackageBuilderLogsDirName
+		})
+		.option('workspace-directory', {
+			alias: 'wdir',
+			type: 'string',
+			description: `Specify workspace directory name. Defaults to ${DefaultWorkspaceDirName}.`,
+			default: DefaultWorkspaceDirName
+		})
+		.option('additional-dirs', {
+			alias: 'adirs',
+			type: 'array',
+			description: 'Specify additional directories to be created alongside the workspace.',
+			default: []
 		})
 		.help()
 		.argv;
 }
 
 function _getOptions(args) {
-	let logDirectory = args.logDirectory;
-	if (!logDirectory) {
-		logDirectory = args.createRoot
-			? './_logs'
-			: '../_logs';
-	}
-
 	const options = {
-		logDirectory: logDirectory,
+		logDirectory: args.logDirectory,
+		workspaceDirectory: args.workspaceDirectory,
+		additionalDirectories: args.additionalDirs || [],
 		shouldCreateRoot: args.createRoot,
 		skipCreateVsCodeWorkspaceFile: args.skipVscode,
 		gitCloneRepo: args.gitCloneRepo,
@@ -122,9 +140,25 @@ function _getOptions(args) {
 	return options;
 }
 
+function _initializePreliminaryDirectoryStructure(options) {
+	const homeDir = os.homedir();
+	const sharedStorageDirPath = path.join(homeDir, SharedStorageDirName);
+	utils.ensureDirectoryExists(sharedStorageDirPath);
+
+	const logDirPath = path.join(sharedStorageDirPath, options.logDirectory);
+	utils.ensureDirectoryExists(logDirPath);
+
+	return {
+		sharedStorageDirPath: sharedStorageDirPath,
+		logDirPath: logDirPath
+	};
+}
+
 function _createLogger(logDirectory) {
-	const serviceName = 'create-fluentui-component';
-	return new PackageBuilderLogger(logDirectory, serviceName);
+	return new PackageBuilderLogger(
+		logDirectory, 
+		LoggingServiceName
+	);
 }
 
 function _buildPackage(logger, options) {
@@ -142,7 +176,7 @@ function _buildPackage(logger, options) {
 
 function _createPackageBuilder(logger, options) {
 	const templateSourceDir = __dirname;
-	const packageDestinationRootDir = './';
+	const packageDestinationRootDir = DefaultPackageDestinationBaseDirPath;
 
 	return new ComponentPackageBuilder(templateSourceDir,
 		packageDestinationRootDir, 
