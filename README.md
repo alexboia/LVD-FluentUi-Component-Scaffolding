@@ -53,8 +53,8 @@ Below you can find a screen capture of running this tool with the following argu
 | `--git-username`, `--gur` | `boolean` | Configure git operations to use this username when logging on. Defaults to `null`. |
 | `--git-token`, `--gtk` | `boolean` | Configure git operations to use this token as password when logging on. Defaults to `null`. |
 | `--log-directory`, `--ld` | `string` | Specify log directory name. Defaults to `package_builder_logs`. |
-| `--worskpace-directory`, `--ld` | `string` | Specify workspace directory name. Defaults to `workspace`. |
-| `--additional-dirs`, `--ld` | `string[]` | Specify additional directories to be created alongside the workspace directory. Defaults to `[]`. Example: `--additonal-dirs dira dirb dirb/dirb1 dirc`. |
+| `--worskpace-directory`, `--wdir` | `string` | Specify workspace directory name. Defaults to `workspace`. |
+| `--additional-dirs`, `--adirs` | `string[]` | Specify additional directories to be created alongside the workspace directory. Defaults to `[]`. Example: `--additonal-dirs dira dirb dirb/dirb1 dirc`. |
 | `--help` | `boolean` | Show help |
 
 ## Required user input
