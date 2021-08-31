@@ -112,7 +112,7 @@ function _getArgs() {
 		.option('additional-dirs', {
 			alias: 'adirs',
 			type: 'array',
-			description: 'Specify additional directories to be created alongside the workspace.',
+			description: 'Specify additional directories to be created alongside the workspace directory.',
 			default: []
 		})
 		.help()

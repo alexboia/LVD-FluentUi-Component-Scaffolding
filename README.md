@@ -52,7 +52,9 @@ Below you can find a screen capture of running this tool with the following argu
 | `--git-email`, `--gem` | `boolean` | Configure git operations to use this author email. Defaults to `null`. |
 | `--git-username`, `--gur` | `boolean` | Configure git operations to use this username when logging on. Defaults to `null`. |
 | `--git-token`, `--gtk` | `boolean` | Configure git operations to use this token as password when logging on. Defaults to `null`. |
-| `--log-directory`, `--ld` | `string` | Specify log directory name. Defaults to `_logs` |
+| `--log-directory`, `--ld` | `string` | Specify log directory name. Defaults to `package_builder_logs`. |
+| `--worskpace-directory`, `--ld` | `string` | Specify workspace directory name. Defaults to `workspace`. |
+| `--additional-dirs`, `--ld` | `string[]` | Specify additional directories to be created alongside the workspace directory. Defaults to `[]`. Example: `--additonal-dirs dira dirb dirb/dirb1 dirc`. |
 | `--help` | `boolean` | Show help |
 
 ## Required user input
@@ -69,9 +71,11 @@ The following parameters are collected from user input:
 
 ## Output structure
 
+The following output structure is all relative to the workspace directory.
+
 ### The directory structure
 
-The following directory structure is generated:
+The following directory structure is generated within:
 
 | Directory | Description |
 | --- | --- |
@@ -162,8 +166,12 @@ The following placeholders are supported for usage both in file names, as well a
 
 The tool generates the following log files:
 
-- `[log-directory]/error.log` - for error events: exceptions, errors coming from the git engine, erros from the `npm install` `stderr` output;
-- `[log-directory]/activity.log` - for every other stuff that's being logged - debug messages, warning messages, info messages and so on.
+- `[LOG_DIRECTORY_PATH]/error.log` - for error events: exceptions, errors coming from the git engine, erros from the `npm install` `stderr` output;
+- `[LOG_DIRECTORY_PATH]/activity.log` - for every other stuff that's being logged - debug messages, warning messages, info messages and so on.
+
+As of version 0.0.5, the `[LOG_DIRECTORY_PATH]` is located at `[USER_HOME]/lvd-fluentui-component-scaffolding/[LOG_DIRECTORY_NAME]` where:
+- `[USER_HOME]` depends on the os;
+- `[LOG_DIRECTORY_NAME]` defaults as mentioned above, but may be overridden using the `--log-directory` flag.
 
 ## Notes
 
@@ -171,6 +179,15 @@ The tool generates the following log files:
 2. To avoid having `npm pack` rename the `.gitignore` file in the template directory to `.npmignore`, the file is included using the `.ignore` name and renamed when when creating the final component package directory.
 
 ## Changelog
+
+### Version 0.0.5
+
+- Default directory name is now `package_builder_logs`;
+- Changed logging directory location: logs are now saved globally in `[USER_HOME]/lvd-fluentui-component-scaffolding/[LOG_DIRECTORY_NAME]` where:
+	- `[USER_HOME]` depends on the os;
+	- `[LOG_DIRECTORY_NAME]` defaults as mentioned above, but may be overridden using the `--log-directory` flag.
+- Changed package structure to include a workspace directory used for the component package itself, to avoid issues when a git clone needs to be performed but, at the same time, the `--from-manifest` flag is used.
+- Added possibility to create additional directories alongside the package workspace, using the `--additional-dirs` flag.
 
 ### Version 0.0.4
 
