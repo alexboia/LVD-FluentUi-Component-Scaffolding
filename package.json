@@ -1,6 +1,6 @@
 {
 	"name": "lvd-fluentui-component-scaffolding",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": " A tool to generate the basic structure of a React component built using the FluentUi library.",
 	"author": "Alexandru Boia <alexandru.boia@gmail.com>",
 	"license": "BSD-3-Clause",
